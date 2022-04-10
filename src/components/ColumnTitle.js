@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "../styles/ColumnTitle.css"
 import PopupRemoveColumn from "./PopapRemoveColumn";
-import PopupAddColumn from "./PopupAddColumn";
+import PopupAddColumn from "./PopupAddTask";
 
 function ColumnTitle ( {column, onAddTask, onRemoveColumn} ) {
 

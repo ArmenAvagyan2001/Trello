@@ -8,9 +8,9 @@ function PopupAddTask({setValueAddColumn, onAddTask, id}) {
     
 
     return(
-        <div className="popup">
-            <div className="popup-container">
-                <div className="popup-body">
+        <div className="popupAddTask">
+            <div className="popupAddTask-container">
+                <div className="popupAddTask-body">
                     <a href="" onClick={(e) =>{
                         e.preventDefault()
                         setValueAddColumn(false)

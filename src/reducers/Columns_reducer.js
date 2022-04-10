@@ -1,4 +1,4 @@
-import { ADD_COLUMN, ADD_TASK, REMOVE_COLUMN, REMOVE_TASK } from "../actions/types"
+import { ADD_COLUMN, ADD_TASK, REMOVE_COLUMN, REMOVE_TASK, REPLACE_TASK, REPLACE_COLUMN } from "../actions/types"
 
 const initialState =  {
     columns: [ 
@@ -100,6 +100,76 @@ export default (state = initialState, action) => {
                         }
                     ]
                 }
+            case REPLACE_TASK: 
+                return { 
+                    ...state, 
+                    columns: state.columns.map(column => {
+                        if (column.id === action.column.id) {
+                            let dragged = column.tasks.filter((task) => task.id === action.draggedId)[0];
+                            let passed = false;
+                            let _passed = false;
+                            return {
+                                ...column,
+                                tasks: column.tasks.map((task, index) => {
+                                    if (task.id === action.draggedId) {
+                                        if (_passed !== true) {
+                                            passed = true;
+                                        } else {
+                                            _passed = false;
+                                            return column.tasks[index - 1];
+                                        }
+                                    }
+                                    if (task.id === action.droppedId) {
+                                        if (passed !== true) {
+                                            _passed = true;
+                                        }
+                                        passed = false;
+                                        return dragged;
+                                    }
+                                    if (index > 0 && _passed) {
+                                        return column.tasks[index - 1];
+                                    }
+                                    if (index < column.tasks.length - 1 && passed) {
+                                        return column.tasks[index + 1];
+                                    }
+                                    return task;
+                                })
+                            }
+                        }
+                        return column
+                    }) 
+                }
+            case REPLACE_COLUMN:
+                let dragged = state.columns.filter((column) => column.id === action.draggedId)[0];
+                let passed = false;
+                let _passed = false;
+                return {
+                    ...state,
+                    columns: state.columns.map( (column, index, columns) => {
+                        if (column.id === action.draggedId) {
+                            if (_passed !== true) {
+                                passed = true;
+                            } else {
+                                _passed = false;
+                                return columns[index - 1];
+                            }
+                        }
+                        if (column.id === action.droppedId) {
+                            if (passed !== true) {
+                                _passed = true;
+                            }
+                            passed = false;
+                            return dragged;
+                        }
+                        if (index > 0 && _passed) {
+                            return columns[index - 1];
+                        }
+                        if (index < columns.length - 1 && passed) {
+                            return columns[index + 1];
+                        }
+                        return column;
+                    })
+                }    
         default:
             return state;
     }
