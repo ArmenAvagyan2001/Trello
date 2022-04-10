@@ -15,6 +15,7 @@ function ColumnTask( {task, onRemoveTask, column, onReplaceTask} ) {
       }));
     
       const replace = (id) => {
+        console.log(id)
            onReplaceTask(id, task.id, column);
       };
 

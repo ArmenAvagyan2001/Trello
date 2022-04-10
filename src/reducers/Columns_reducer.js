@@ -169,7 +169,7 @@ export default (state = initialState, action) => {
                         }
                         return column;
                     })
-                }    
+                }   
         default:
             return state;
     }

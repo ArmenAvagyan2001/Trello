@@ -16,6 +16,7 @@ function Column ( { column, onAddTask, onRemoveColumn, onRemoveTask, onReplaceTa
     
       const replace = (id) => {
           onReplaceColumn(id, column.id)
+          console.log(id)
       };
 
       const [{ isDragging }, drag] = useDrag(() => ({
@@ -30,9 +31,9 @@ function Column ( { column, onAddTask, onRemoveColumn, onRemoveTask, onReplaceTa
         <div ref={drop}>
             <div className="Column" ref={drag}>
                 <ColumnTitle column={column} onAddTask={ onAddTask } onRemoveColumn={onRemoveColumn}/>
-                {column.tasks.map( (task ) => {
+                {column.tasks.map( (task,index) => {
                     return (
-                        <div key={task.id} className="Tasks">
+                        <div key={index} className="Tasks">
                             <ColumnTask task={task} column={column} onRemoveTask={onRemoveTask} onReplaceTask={onReplaceTask}/>
                         </div>
                     )
