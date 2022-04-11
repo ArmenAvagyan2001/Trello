@@ -8,21 +8,20 @@ import rootReducer from "./reducers"
 const initialState = {}
 const middleware = [thunk];
 
-/*const persistConfig = {
-    key: "main-root",
+const persistConfig = {
+    key: "main",
     storage,
-}*/
+}
 
-//const persistedReducer = persistReducer(persistConfig, rootReducer)
+const persistedReducer = persistReducer(persistConfig, rootReducer)
 
 const store = createStore(
-    //persistedReducer,
-    rootReducer,
+    persistedReducer,
     initialState,
     applyMiddleware(...middleware)
 );
 
-//const persistor = persistStore(store);
+const persistor = persistStore(store);
 
-//export { persistor }
+export { persistor }
 export default store;
