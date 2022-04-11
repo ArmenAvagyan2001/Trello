@@ -7,7 +7,7 @@ function ColumnTask( {task, onRemoveTask, column, onReplaceTask} ) {
 
     const [valueRremoveTask, setValueRemoveTask] = useState(false)
     const [{ isOver }, drop] = useDrop(() => ({
-        accept: "item",
+        accept: "tasks",
         drop: (item) => replace(item.id),
         collect: (monitor) => ({
           isOver: !!monitor.isOver(),
@@ -15,12 +15,12 @@ function ColumnTask( {task, onRemoveTask, column, onReplaceTask} ) {
       }));
     
       const replace = (id) => {
-        console.log(id)
-           onReplaceTask(id, task.id, column);
+          onReplaceTask(id, task.id, column);
+          //console.log(id);
       };
 
       const [{ isDragging }, drag] = useDrag(() => ({
-        type: "item",
+        type: "tasks",
         item: { id: task.id },
         collect: (monitor) => ({
           isDragging: !!monitor.isDragging(),

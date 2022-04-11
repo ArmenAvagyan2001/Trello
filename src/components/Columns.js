@@ -9,16 +9,14 @@ function  Columns( { columns, onAddTask, onRemoveColumn, onRemoveTask, onReplace
             {
                 columns.map((column) => {
                     return (
-                        <div key={column.id}>
                             <Column column={column} 
+                                    key={column.id}
                                     onAddTask={onAddTask} 
                                     onRemoveColumn={onRemoveColumn} 
                                     onRemoveTask={onRemoveTask}
                                     onReplaceTask={onReplaceTask}
                                     onReplaceColumn={onReplaceColumn}
                             />
-                        </div>
-                        
                     )
                 })
             }

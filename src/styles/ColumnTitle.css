@@ -7,7 +7,7 @@
 
 .taskTitle h3 {
     font-family: cursive;
-    hyphens: auto;
+    word-break: break-all;
 }
 
 .taskTitle div {

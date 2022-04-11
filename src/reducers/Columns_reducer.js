@@ -110,13 +110,13 @@ export default (state = initialState, action) => {
                             let _passed = false;
                             return {
                                 ...column,
-                                tasks: column.tasks.map((task, index) => {
+                                tasks: column.tasks.map((task, index, tasks) => {
                                     if (task.id === action.draggedId) {
                                         if (_passed !== true) {
                                             passed = true;
                                         } else {
                                             _passed = false;
-                                            return column.tasks[index - 1];
+                                            return tasks[index - 1];
                                         }
                                     }
                                     if (task.id === action.droppedId) {
@@ -127,10 +127,10 @@ export default (state = initialState, action) => {
                                         return dragged;
                                     }
                                     if (index > 0 && _passed) {
-                                        return column.tasks[index - 1];
+                                        return tasks[index - 1];
                                     }
-                                    if (index < column.tasks.length - 1 && passed) {
-                                        return column.tasks[index + 1];
+                                    if (index < tasks.length - 1 && passed) {
+                                        return tasks[index + 1];
                                     }
                                     return task;
                                 })

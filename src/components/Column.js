@@ -7,7 +7,7 @@ import { useDrag, useDrop } from "react-dnd";
 function Column ( { column, onAddTask, onRemoveColumn, onRemoveTask, onReplaceTask, onReplaceColumn } ) {
 
     const [{ isOver }, drop] = useDrop(() => ({
-        accept: "item",
+        accept: "column",
         drop: (item) => replace(item.id),
         collect: (monitor) => ({
           isOver: !!monitor.isOver(),
@@ -16,11 +16,10 @@ function Column ( { column, onAddTask, onRemoveColumn, onRemoveTask, onReplaceTa
     
       const replace = (id) => {
           onReplaceColumn(id, column.id)
-          console.log(id)
       };
 
       const [{ isDragging }, drag] = useDrag(() => ({
-        type: "item",
+        type: "column",
         item: { id: column.id },
         collect: (monitor) => ({
           isDragging: !!monitor.isDragging(),
@@ -31,11 +30,9 @@ function Column ( { column, onAddTask, onRemoveColumn, onRemoveTask, onReplaceTa
         <div ref={drop}>
             <div className="Column" ref={drag}>
                 <ColumnTitle column={column} onAddTask={ onAddTask } onRemoveColumn={onRemoveColumn}/>
-                {column.tasks.map( (task,index) => {
+                {column.tasks.map( (task) => {
                     return (
-                        <div key={index} className="Tasks">
-                            <ColumnTask task={task} column={column} onRemoveTask={onRemoveTask} onReplaceTask={onReplaceTask}/>
-                        </div>
+                        <ColumnTask key={task.id} task={task} column={column} onRemoveTask={onRemoveTask} onReplaceTask={onReplaceTask}/>
                     )
                 })}
             </div>
