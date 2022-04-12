@@ -18,7 +18,7 @@ function PopupAddTask({setValueAddColumn, onAddTask, id}) {
                     <div>
                         <p>Title task</p>
                         <input  type="text" 
-                                placeholder="TITLE" 
+                                placeholder="TITLE..." 
                                 value={title} 
                                 onChange={(e) => {
                                     e.preventDefault();
@@ -29,13 +29,13 @@ function PopupAddTask({setValueAddColumn, onAddTask, id}) {
                     <div>
                         <p>Desctiption task</p>
                         <input  type="text" 
-                            placeholder="DESCRIPTION" 
+                            placeholder="DESCRIPTION..." 
                             value={description}
                             onChange={(e) => {
                                 e.preventDefault()
                                 setDescription(e.target.value)
                             }}
-                        />
+                        ></input>
                     </div>
                     <button onClick={(e) => {
                         e.preventDefault()

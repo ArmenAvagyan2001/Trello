@@ -45,7 +45,6 @@
     font-size: 18px;
     border-radius: 10px;
 }
-
 .popupAddTask-body div input::placeholder{
     font-size: 18px;
     text-indent: 15px;

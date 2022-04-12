@@ -3,7 +3,7 @@ import "../styles/Columns.css"
 import Column from "./Column";
 
 
-function  Columns( { columns, onAddTask, onRemoveColumn, onRemoveTask, onReplaceTask, onReplaceColumn} ) {
+function  Columns( { columns, onAddTask, onRemoveColumn, onRemoveTask, onReplaceTask, onReplaceColumn, onChangeTitleColumn} ) {
     return (
         <div className="Columns">
             {
@@ -16,6 +16,7 @@ function  Columns( { columns, onAddTask, onRemoveColumn, onRemoveTask, onReplace
                                     onRemoveTask={onRemoveTask}
                                     onReplaceTask={onReplaceTask}
                                     onReplaceColumn={onReplaceColumn}
+                                    onChangeTitleColumn={onChangeTitleColumn}
                             />
                     )
                 })

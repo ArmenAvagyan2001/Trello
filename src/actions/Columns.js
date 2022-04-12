@@ -1,4 +1,4 @@
-import {ADD_COLUMN, ADD_TASK, REMOVE_COLUMN, REMOVE_TASK, REPLACE_COLUMN, REPLACE_TASK} from "./types";
+import {ADD_COLUMN, ADD_TASK, CHANGE_COLUMN_TITLE, REMOVE_COLUMN, REMOVE_TASK, REPLACE_COLUMN, REPLACE_TASK} from "./types";
 
 export const addTask = (title, description, id ) => dispatch => {
     dispatch({
@@ -45,5 +45,13 @@ export const replaceColumn = (draggedId, droppedId) => dispatch => {
         type: REPLACE_COLUMN,
         draggedId,
         droppedId
+    })
+}
+
+export const changeColumnTitle = (newTitle, column) => dispatch => {
+    dispatch({
+        type : CHANGE_COLUMN_TITLE,
+        newTitle,
+        column
     })
 }

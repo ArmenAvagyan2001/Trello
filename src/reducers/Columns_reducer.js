@@ -1,4 +1,4 @@
-import { ADD_COLUMN, ADD_TASK, REMOVE_COLUMN, REMOVE_TASK, REPLACE_TASK, REPLACE_COLUMN } from "../actions/types"
+import { ADD_COLUMN, ADD_TASK, REMOVE_COLUMN, REMOVE_TASK, REPLACE_TASK, REPLACE_COLUMN, CHANGE_COLUMN_TITLE } from "../actions/types"
 
 const initialState =  {
     columns: [ 
@@ -170,6 +170,21 @@ export default (state = initialState, action) => {
                         return column;
                     })
                 }   
+
+            case CHANGE_COLUMN_TITLE:
+                return {
+                    ...state,
+                    columns: state.columns.map((column) => {
+                        if(column.id === action.column.id){
+                            return {
+                                ...column,
+                                title: action.newTitle
+                            }
+                        }else{
+                            return column
+                        }
+                    })
+                }
         default:
             return state;
     }

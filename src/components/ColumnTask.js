@@ -35,7 +35,7 @@ function ColumnTask( {task, onRemoveTask, column, onReplaceTask} ) {
                 <a href="" onClick={(e) => {
                     e.preventDefault()
                     setValueRemoveTask(true)
-                }}>X</a>
+                }}><i class="fa fa-trash"></i></a>
                 <p className="date">{task.date}</p>
                 {valueRremoveTask ? <PopupRemoveTask    task={task} 
                                                         column={column} 
