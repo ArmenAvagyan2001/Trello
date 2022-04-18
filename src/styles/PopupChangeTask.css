@@ -1,4 +1,4 @@
-.popupRemoveTask{
+.popupChangeTask{
     display: flex;
     width: 100%;
     height: 100%;
@@ -9,16 +9,15 @@
     z-index: 2;
 }
 
-.popupRemoveTask-container{
+.popupChangeTaskContainer{
     display: flex;
     width: 100%;
     height: 100%;
-    justify-content: center;
     align-items: center;
-
+    justify-content: center;
 }
 
-.popupRemoveTask-body{
+.popupChangeTaskBody{
     width: 500px;
     background-color: #fff;
     padding: 80px 10px 80px 10px;
@@ -27,18 +26,39 @@
     border-radius: 10px;
 }
 
-.popupRemoveTask-body p {
-    font-size: 25px;
+.changeDiv {
     margin: 20px;
 }
 
-.popupRemoveTask-body button {
-    width: 150px;
+.changeDiv input {
+    height: 50px;
+    width: 250px;
+    border-radius: 10px;
+    font-size: 18px;
+    margin: 0px;
+}
+
+.changeDiv p {
+    font-size: 24px;
+    font-weight: 600;
+    margin: 0px;
+}
+
+.changeButton {
+    width: 250px;
     height: 50px;
     border-radius: 10px;
     font-size: 18px;
     font-weight: 600;
-    color: #fff;
-    margin: 5px;
     background-color: blue;
+    color: #fff;
+}
+
+.popupChangeTaskBody a {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    text-decoration: none;
+    color: black;
+    cursor: pointer;
 }

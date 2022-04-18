@@ -1,4 +1,4 @@
-import { ADD_COLUMN, ADD_TASK, REMOVE_COLUMN, REMOVE_TASK, REPLACE_TASK, REPLACE_COLUMN, CHANGE_COLUMN_TITLE } from "../actions/types"
+import { ADD_COLUMN, ADD_TASK, REMOVE_COLUMN, REMOVE_TASK, REPLACE_TASK, REPLACE_COLUMN, CHANGE_COLUMN_TITLE, CHANGE_TASK } from "../actions/types"
 
 const initialState =  {
     columns: [ 
@@ -44,15 +44,16 @@ export default (state = initialState, action) => {
 
                         let date = new Date()
                         let formatter = new Intl.DateTimeFormat("en", {
-                            weekday: "long",
                             year: "numeric",
                             month: "long",
-                            day: "numeric"
+                            day: "numeric",
+                            hour: "numeric",
+                            minute: "numeric"
                           })
 
                         return {...column, tasks: [...column.tasks, {
                             id: last_id + 1, 
-                            title: action.title, 
+                            title: action.title,
                             description: action.description,
                             date: formatter.format(date)
                         }]}
@@ -182,6 +183,31 @@ export default (state = initialState, action) => {
                             }
                         }else{
                             return column
+                        }
+                    })
+                }
+
+            case CHANGE_TASK:
+                return {
+                    ...state,
+                    columns: state.columns.map((column) => {
+                        if(column.id === action.column.id){
+                            return {
+                                ...column,
+                                tasks: column.tasks.map((task) => {
+                                    if(task.id === action.task.id) {
+                                        return {
+                                            ...task,
+                                            title: action.changeTaskTitle,
+                                            description: action.changeTaskDescription
+                                        }
+                                    }else {
+                                        return task
+                                    }
+                                })
+                            }
+                        }else{
+                            return column;
                         }
                     })
                 }

@@ -10,8 +10,9 @@ function ColumnTitle ( {column, onAddTask, onRemoveColumn, onChangeTitleColumn} 
     const [changeTitle, setChangeTitle] = useState(false)
     const [newTitle, setNewTitle] = useState(column.title)
     return (
-        <div >
-            {changeTitle ? 
+        <>
+            {
+                changeTitle ? 
                 <form className="taskTitle"
                     onSubmit={(e) => {
                         e.preventDefault()
@@ -30,27 +31,34 @@ function ColumnTitle ( {column, onAddTask, onRemoveColumn, onChangeTitleColumn} 
                 </form> 
                     : 
                 <div className="taskTitle">
-                    <h3>{column.title}</h3>
-                    <div></div>
-                    {valueAddColumn ? <PopupAddColumn onAddTask={onAddTask} setValueAddColumn={setValueAddColumn} id={column.id}/> : null}
+                    <h3 onClick={() => {
+                        setChangeTitle(true)
+                    }}>{column.title}</h3>
                     <button onClick={() => {
                                 setChangeTitle(true)
                             }}   
-                    ><i class="fa fa-pencil"></i></button>
+                    ><i className="fa fa-pencil"></i></button>
                     <button className="buttonAdd" 
                             onClick={() => {
                                 setValueAddColumn(true)
                             }}
                     >Add task</button>
-                    {valueRemoveColumn ? <PopupRemoveColumn column={column} onRemoveColumn={onRemoveColumn} setValueRemoveColumn={setValueRemoveColumn}/> : null}
+                    {valueAddColumn ?   <PopupAddColumn   onAddTask={onAddTask} 
+                                                        setValueAddColumn={setValueAddColumn} 
+                                                        id={column.id}
+                                        /> : null}
+                    {valueRemoveColumn ?    <PopupRemoveColumn column={column} 
+                                                            onRemoveColumn={onRemoveColumn} 
+                                                            setValueRemoveColumn={setValueRemoveColumn}
+                                            /> : null}
                     <a className="buttonRemove"
                             onClick={() => {
                                 setValueRemoveColumn(true)
                             }}
                     ><i className="fa fa-trash"></i></a>
-                </div>}
-            
-        </div>
+                </div>
+            }
+        </>
     )
 }
 

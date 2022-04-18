@@ -4,7 +4,10 @@ import ColumnTitle from "./ColumnTitle";
 import "../styles/Columns.css"
 import { useDrag, useDrop } from "react-dnd";
 
-function Column ( { column, onAddTask, onRemoveColumn, onRemoveTask, onReplaceTask, onReplaceColumn, onChangeTitleColumn} ) {
+function Column ( { column, onAddTask, onRemoveColumn, 
+                    onRemoveTask, onReplaceTask, onReplaceColumn, 
+                    onChangeTitleColumn, onChangeTask
+                  } ) {
 
     const [{ isOver }, drop] = useDrop(() => ({
         accept: "column",
@@ -41,6 +44,7 @@ function Column ( { column, onAddTask, onRemoveColumn, onRemoveTask, onReplaceTa
                                     column={column} 
                                     onRemoveTask={onRemoveTask} 
                                     onReplaceTask={onReplaceTask}
+                                    onChangeTask={onChangeTask}
                         />
                     )
                 })}

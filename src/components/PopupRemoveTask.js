@@ -4,8 +4,16 @@ import "../styles/PopupRemoveTask.css"
 function PopupRemoveTask ({ onRemoveTask, task, column, setValueRemoveTask}) {
     return (
         <div className="popupRemoveTask">
-            <div className="popupRemoveTask-container">
-                <div className="popupRemoveTask-body">
+            <div    className="popupRemoveTask-container"
+                    onClick={(e) => {
+                        setValueRemoveTask(false)
+                    }}
+            >
+                <div    className="popupRemoveTask-body"
+                        onClick={(e) => {
+                            e.stopPropagation()
+                        }}
+                >
                     <p>Are you sure to delete this task?</p>
                     <div>
                         <button className="buttonYes"

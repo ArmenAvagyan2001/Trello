@@ -11,22 +11,32 @@
 .taskItem h4{
     text-align: center;
     font-family: cursive;
-    word-break: break-all;
+    overflow-wrap: break-word;
 }
 
 .taskItem .description {
     text-indent: 20px;
     font-family: serif;
     text-align: justify;
-    word-break: break-all;
+    overflow-wrap: break-word;
 }
 
-.taskItem a {
+.taskItem .delete {
     color: black;
     font-weight: 500;
     position: absolute;
     text-decoration: none;
     right: 10px;
+    top: 5px;
+    cursor:pointer;
+}
+
+.taskItem .change {
+    color: black;
+    font-weight: 500;
+    position: absolute;
+    text-decoration: none;
+    right: 30px;
     top: 5px;
     cursor:pointer;
 }

@@ -4,9 +4,16 @@ import "../styles/PopupRemoveColumn.css"
 function PopupRemoveColumn ({ setValueRemoveColumn, column, onRemoveColumn }) {
     return (
         <div className="popupRemoveColumn">
-            <div className="popupRemoveColumn-container">
-                <div className="popupRemoveColumn-body">
-                    
+            <div    className="popupRemoveColumn-container"
+                    onClick={(e) => {
+                        setValueRemoveColumn(false)
+                    }}
+            >
+                <div    className="popupRemoveColumn-body" 
+                        onClick={(e) => {
+                            e.stopPropagation()
+                        }}
+                >
                     <p>Are you sure to delete this column?</p>
                     <div>
                         <button className="buttonYes"
